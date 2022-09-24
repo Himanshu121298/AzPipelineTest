@@ -51,3 +51,11 @@ steps:
   inputs:
     targetPath: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'myWebsiteName'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Azure for Students(e8720f6d-5ae6-49ac-9988-0ba50870abae)'
+    appType: 'webApp'
+    appName: 'MastDataTransporter1'
+    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+    deploymentMethod: 'auto'

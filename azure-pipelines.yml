@@ -41,8 +41,12 @@ steps:
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
-
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: 'curl -X POST -u ashugarg448@gmail.com:Himanshu@123 --data-binary "@/home/vsts/work/1/a/s.zip” https://mastdatatransporter1.scm.azurewebsites.net/api/publish?type=zip'
 # this code takes all the files in $(Build.ArtifactStagingDirectory) and uploads them as an artifact of your build.
+
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Build.ArtifactStagingDirectory)' 
